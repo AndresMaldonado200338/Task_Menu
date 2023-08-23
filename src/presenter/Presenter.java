@@ -13,33 +13,61 @@ public class Presenter {
         init();
     }
 
-    public void init(){
+    public void init() {
         short option = 0;
         do {
             option = view.readShort(Constants.MENU);
             switch (option) {
                 case 1:
-                    listManagement.newTask(view.readString("Name Task: "));
+                    createTask();
                     break;
                 case 2:
-                    listManagement.completedTask(view.readShort("Number Task: "));
+                    completedTask();
                     break;
                 case 3:
-                    listManagement.viewTask();
+                    listTask();
                     break;
                 case 4:
-                    listManagement.deleteTask();
+                    deleteTask();
                     break;
                 case 5:
-                    listManagement.viewTaskIncomplete();
+                    countTaskIncomplete();
                     break;
                 case 6:
                     view.showMessage("Bye");
+                    System.exit(0);
                     break;
                 default:
                     view.showMessage("Option invalid");
                     break;
             }
         } while (option != 6);
+    }
+
+    public void createTask() {
+        String nameTask = view.readString("Ingrese el nombre de la tarea");
+        listManagement.newTask(nameTask);
+    }
+
+    public void completedTask() {
+        String nameTask = view.readString("Ingrese el nombre de la tarea");
+        listManagement.completedTask(nameTask);
+    }
+
+    public void listTask() {
+        view.showMessage(listManagement.viewTask().toString());
+    }
+
+    public void deleteTask() {
+        String nameTask = view.readString("Ingrese el nombre de la tarea");
+        listManagement.deleteTask(nameTask);
+    }
+
+    public void countTaskIncomplete() {
+
+    }
+
+    public static void main(String[] args) {
+        new Presenter();
     }
 }
