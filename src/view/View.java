@@ -11,7 +11,7 @@ public class View {
     }
 
     public void showMessage(String message) {
-        System.out.println(message);
+        System.out.println("\n"+message);
     }
 
     public short readShort(String message) {

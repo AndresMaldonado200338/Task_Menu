@@ -64,7 +64,7 @@ public class Presenter {
     }
 
     public void countTaskIncomplete() {
-
+        view.showMessage(listManagement.viewTaskIncomplete().toString());
     }
 
     public static void main(String[] args) {

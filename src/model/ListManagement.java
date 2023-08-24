@@ -36,8 +36,8 @@ public class ListManagement {
     public StringBuilder viewTask() {
         StringBuilder auxStringBuilder = new StringBuilder("");
         for (int i = 0; i < listTaks.size(); i++) {
-            auxStringBuilder.append(i + 1);
-            auxStringBuilder.append(listTaks.get(i).getNameTask());
+            auxStringBuilder.append(i + 1 +"-");
+            auxStringBuilder.append(listTaks.get(i).getNameTask()+" estado:"+listTaks.get(i).estatus()+"\n");
         }
         return auxStringBuilder;
     }
@@ -62,8 +62,8 @@ public class ListManagement {
         int counter = 0;
         for (int i = 0; i < listTaks.size(); i++) {
             if (!listTaks.get(i).isCompleted()) {
-                auxStringBuilder.append(i + 1);
-                auxStringBuilder.append(listTaks.get(i).getNameTask());
+                auxStringBuilder.append(i + 1 +"-");
+                auxStringBuilder.append(listTaks.get(i).getNameTask()+"\n");
                 counter++;
             }
         }

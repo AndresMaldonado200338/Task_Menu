@@ -9,8 +9,18 @@ public class Task {
         this.nameTask = nameTask;
     }
 
-    public boolean isCompleted() {
+    public boolean isCompleted(){
         return completed;
+    }
+    
+    public String estatus() {
+        String estatus;
+        if (completed==false) {
+            estatus = "Incompleta";
+        }else{
+            estatus = "Completa";
+        }
+        return estatus;
     }
 
     public void setCompleted(boolean completed) {
