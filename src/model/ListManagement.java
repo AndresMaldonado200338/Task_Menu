@@ -13,8 +13,12 @@ public class ListManagement {
      * Method to create a new task
      * 
      * @param nameTask
+     * @throws TaskAlreadyExistsException
      */
-    public void newTask(String nameTask) {
+    public void newTask(String nameTask) throws TaskAlreadyExistsException {
+        if (validationNameTask(nameTask)) {
+            throw new TaskAlreadyExistsException(Constants.MESSAGE_TASK_ALREADY_EXISTS + nameTask);
+        }
         listTaks.add(new Task(false, nameTask));
     }
 
@@ -40,7 +44,7 @@ public class ListManagement {
         StringBuilder auxStringBuilder = new StringBuilder("");
         for (int i = 0; i < listTaks.size(); i++) {
             auxStringBuilder.append(i + 1 + "-");
-            auxStringBuilder.append(listTaks.get(i).getNameTask() + " estado:" + listTaks.get(i).estatus() + "\n");
+            auxStringBuilder.append(listTaks.get(i).getNameTask() + Constants.MESSAGE_STATUS + listTaks.get(i).estatus() + "\n");
         }
         return auxStringBuilder;
     }
